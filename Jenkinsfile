@@ -47,7 +47,7 @@ pipeline {
                     cd "$APP_DIR"
                     python3 -m venv venv
                     ./venv/bin/pip install --quiet -r requirements.txt
-                    if [ -f app.pid ]; then OLD=$(cat app.pid); kill $OLD 2>/dev/null || true; for i in $(seq 1 15); do kill -0 $OLD 2>/dev/null || break; sleep 1; done; kill -9 $OLD 2>/dev/null || true; fi
+                    pkill -9 -f "[g]unicorn -b 0.0.0.0:5000" || true; for i in $(seq 1 10); do ss -ltn | grep -q ":5000 " || break; sleep 1; done
                     BUILD_ID=dontKillMe JENKINS_NODE_COOKIE=dontKillMe \
                       nohup ./venv/bin/gunicorn -b 0.0.0.0:5000 app:app > app.log 2>&1 &
                     echo $! > app.pid
