@@ -1,0 +1,27 @@
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+terraform.tfvars
+*.auto.tfvars
+.terraform.tfstate.lock.info
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+report.xml
+
+# Secrets / keys
+*.pem
+*.key
+id_rsa*
+azure_vm_key*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

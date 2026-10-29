@@ -1,0 +1,8 @@
+# Copy to terraform.tfvars and edit (terraform.tfvars is git-ignored).
+project_name        = "webappcicd"
+environment         = "dev"
+location            = "centralindia"
+vm_size             = "Standard_B1s"
+admin_username      = "azureuser"
+ssh_public_key_path = "~/.ssh/azure_vm_key.pub"
+allowed_ssh_cidr    = "*"
